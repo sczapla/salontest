@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class StronaLogowania extends Strona {
+public class Logowanie extends Strona {
 	@FindBy(id = "username")
 	private WebElement login;
 
@@ -14,7 +14,7 @@ public class StronaLogowania extends Strona {
 	@FindBy(id = "btnLogin")
 	private WebElement przyciskZaloguj;
 
-	public StronaLogowania(WebDriver webDriver) {
+	public Logowanie(WebDriver webDriver) {
 		super(webDriver);
 	}
 
@@ -26,9 +26,9 @@ public class StronaLogowania extends Strona {
 		return this;
 	}
 
-	public static StronaLogowania otworz(WebDriver webDriver, String bazowyUrl) {
+	public static Logowanie otworz(WebDriver webDriver, String bazowyUrl) {
 		webDriver.get(bazowyUrl);
-		return new StronaLogowania(webDriver);
+		return new Logowanie(webDriver);
 	}
 
 }
