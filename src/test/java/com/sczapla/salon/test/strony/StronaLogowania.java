@@ -5,29 +5,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class StronaLogowania extends Strona {
-    @FindBy(id = "username")
+	@FindBy(id = "username")
 	private WebElement login;
-    
-    @FindBy(id = "password")
-    private WebElement password;
-    
-    @FindBy(id = "btnLogin")
-    private WebElement przyciskZaloguj;
 
-    public StronaLogowania(WebDriver webDriver) {
-        super(webDriver);
-    }
+	@FindBy(id = "password")
+	private WebElement password;
 
-    public void zaloguj(String uzytkownik, String haslo) {
-        webDriver.manage().window().maximize();
-    	login.sendKeys(uzytkownik);
-        password.sendKeys(haslo);
-        przyciskZaloguj.click();
-    }
+	@FindBy(id = "btnLogin")
+	private WebElement przyciskZaloguj;
 
-    public static StronaLogowania otworz(WebDriver webDriver, String bazowyUrl) {
-        webDriver.get(bazowyUrl);
-        return new StronaLogowania(webDriver);
-    }
+	public StronaLogowania(WebDriver webDriver) {
+		super(webDriver);
+	}
+
+	public Strona zaloguj(String uzytkownik, String haslo) {
+		webDriver.manage().window().maximize();
+		login.sendKeys(uzytkownik);
+		password.sendKeys(haslo);
+		przyciskZaloguj.click();
+		return this;
+	}
+
+	public static StronaLogowania otworz(WebDriver webDriver, String bazowyUrl) {
+		webDriver.get(bazowyUrl);
+		return new StronaLogowania(webDriver);
+	}
 
 }
