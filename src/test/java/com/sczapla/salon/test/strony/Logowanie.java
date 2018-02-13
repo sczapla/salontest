@@ -18,12 +18,12 @@ public class Logowanie extends Strona {
 		super(webDriver);
 	}
 
-	public Strona zaloguj(String uzytkownik, String haslo) {
+	public Pulpit zaloguj(String uzytkownik, String haslo) {
 		webDriver.manage().window().maximize();
 		login.sendKeys(uzytkownik);
 		password.sendKeys(haslo);
 		przyciskZaloguj.click();
-		return this;
+		return new Pulpit(webDriver);
 	}
 
 	public static Logowanie otworz(WebDriver webDriver, String bazowyUrl) {

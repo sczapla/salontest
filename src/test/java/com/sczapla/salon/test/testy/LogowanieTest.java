@@ -1,5 +1,7 @@
 package com.sczapla.salon.test.testy;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -7,25 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sczapla.salon.test.strony.Logowanie;
+import com.sczapla.salon.test.strony.Pulpit;
 import com.sczapla.salon.test.wsparcie.WebTest;
-
-import static org.assertj.core.api.Assertions.*;
-
 
 @RunWith(SpringRunner.class)
 @WebTest
 public class LogowanieTest {
 
-    @Autowired
-    WebDriver webDriver;
+	@Autowired
+	WebDriver webDriver;
 
-    @Autowired
-    DaneTestowe dane;
+	@Autowired
+	DaneTestowe dane;
 
-    @Test
-    public void testLogowanie() {
-    	Logowanie.otworz(webDriver, dane.bazowyUrl)
-        .zaloguj(dane.uzytkownikKierownikLogin, dane.uzytkownikKierownikHaslo);
-    }
+	@Test
+	public void testLogowanie() {
+		Pulpit pulpit = Logowanie.otworz(webDriver, dane.bazowyUrl).zaloguj(dane.uzytkownikKierownikLogin,
+				dane.uzytkownikKierownikHaslo);
+		assertTrue(pulpit.czyWidocznyLinkUzytkownicy());
+	}
 
 }
