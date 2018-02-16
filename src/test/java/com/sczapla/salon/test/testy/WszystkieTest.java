@@ -5,10 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({
-	LogowanieTest.class
-})
-
+@SuiteClasses({ LogowanieTest.class, UzytkownicyTest.class })
 
 public class WszystkieTest {
 

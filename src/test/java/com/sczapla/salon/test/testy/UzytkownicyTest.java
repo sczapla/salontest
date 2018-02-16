@@ -1,5 +1,9 @@
 package com.sczapla.salon.test.testy;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sczapla.salon.test.strony.Logowanie;
-import com.sczapla.salon.test.strony.Uzytkownicy;
 import com.sczapla.salon.test.wsparcie.WebTest;
 
 @RunWith(SpringRunner.class)
@@ -15,19 +18,30 @@ import com.sczapla.salon.test.wsparcie.WebTest;
 public class UzytkownicyTest {
 
 	@Autowired
-	WebDriver webDriver;
+	private WebDriver webDriver;
 
 	@Autowired
-	DaneTestowe dane;
+	private DaneTestowe dane;
 
 	@Test
 	public void testDodawanieUzytkownika() {
-		Uzytkownicy uzytkownicy = Logowanie.otworz(webDriver, dane.bazowyUrl)
-				.zaloguj(dane.uzytkownikKierownikLogin, dane.uzytkownikKierownikHaslo).przejdzDoUzytkownikow()
+		String komunikat = Logowanie.otworz(webDriver, dane.getBazowyUrl())
+				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo()).przejdzDoUzytkownikow()
 				.kliknijDodajUzytkownika().wpiszDaneNowegoUzytkownika(dane)
-				.filtrujWgNazwiska(dane.nowyUzytkownikNazwisko).usunUzytkownika()
-				.filtrujWgNazwiska(dane.nowyUzytkownikNazwisko);
+				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).usunUzytkownika()
+				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).pobierzOpisTabeli();
 
+		assertEquals("Brak elementów do wyświetlenia", komunikat);
+	}
+
+	@Test
+	public void testModyfikacjaUzytkownika() {
+		String telefon = String.valueOf(ThreadLocalRandom.current().nextInt(100000000, 1000000000));
+		String telefonZTabeli = Logowanie.otworz(webDriver, dane.getBazowyUrl())
+				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo()).przejdzDoUzytkownikow()
+				.filtrujWgNazwiska(dane.getIstniejacyUzytkownikNazwisko()).edytujUzytkownika()
+				.wpiszTelefonUzytkownika(telefon).zapiszUzytkownika().pobierzTelefonZTabeli();
+		assertEquals(telefon, telefonZTabeli);
 	}
 
 }

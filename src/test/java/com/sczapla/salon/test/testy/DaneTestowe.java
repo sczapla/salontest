@@ -21,12 +21,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DaneTestowe {
-	String uzytkownikKierownikLogin;
-	String uzytkownikKierownikHaslo;
-	String bazowyUrl;
-	String nowyUzytkownikImie;
-	String nowyUzytkownikNazwisko;
-	String nowyUzytkownikTelefon;
-	String nowyUzytkownikHaslo;
-	String nowyUzytkownikEmail;
+	private String uzytkownikKierownikLogin;
+	private String uzytkownikKierownikHaslo;
+	private String bazowyUrl;
+	private String nowyUzytkownikImie;
+	private String nowyUzytkownikNazwisko;
+	private String nowyUzytkownikTelefon;
+	private String nowyUzytkownikHaslo;
+	private String nowyUzytkownikEmail;
+	private String istniejacyUzytkownikNazwisko;
 }

@@ -17,15 +17,15 @@ import com.sczapla.salon.test.wsparcie.WebTest;
 public class LogowanieTest {
 
 	@Autowired
-	WebDriver webDriver;
+	private WebDriver webDriver;
 
 	@Autowired
-	DaneTestowe dane;
+	private DaneTestowe dane;
 
 	@Test
 	public void testLogowanie() {
-		Pulpit pulpit = Logowanie.otworz(webDriver, dane.bazowyUrl).zaloguj(dane.uzytkownikKierownikLogin,
-				dane.uzytkownikKierownikHaslo);
+		Pulpit pulpit = Logowanie.otworz(webDriver, dane.getBazowyUrl()).zaloguj(dane.getUzytkownikKierownikLogin(),
+				dane.getUzytkownikKierownikHaslo());
 		assertTrue(pulpit.czyWidocznyLinkUzytkownicy());
 	}
 

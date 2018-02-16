@@ -15,19 +15,19 @@ public class Uzytkownicy extends Strona {
 	private WebElement filtrTelefon;
 
 	@FindBy(id = "systemUser:j_idt50:userFirstName")
-	private WebElement nowyUzytkownikImie;
+	private WebElement uzytkownikImie;
 
 	@FindBy(id = "systemUser:j_idt50:userSurName")
-	private WebElement nowyUzytkownikNazwisko;
+	private WebElement uzytkownikNazwisko;
 
 	@FindBy(id = "systemUser:j_idt50:userPhone")
-	private WebElement nowyUzytkownikTelefon;
+	private WebElement uzytkownikTelefon;
 
 	@FindBy(id = "systemUser:j_idt50:userPassword")
-	private WebElement nowyUzytkownikHaslo;
+	private WebElement uzytkownikHaslo;
 
 	@FindBy(id = "systemUser:j_idt50:userMail")
-	private WebElement nowyUzytkownikEmail;
+	private WebElement uzytkownikEmail;
 
 	@FindBy(id = "systemUser:userAddButton")
 	private WebElement przyciskDodaj;
@@ -50,6 +50,15 @@ public class Uzytkownicy extends Strona {
 	@FindBy(id = "systemUser:systemUserTable:0:delete")
 	private WebElement przyciskUsunUzytkownika;
 
+	@FindBy(css = "#systemUser:systemUserTable_data > tr > td")
+	private WebElement komunikat;
+
+	@FindBy(id = "systemUser:systemUserTable:0:edit")
+	private WebElement przyciskEdytujUzytkownika;
+
+	@FindBy(css = "#systemUser:systemUserTable_data > tr > td:nth-child(3)")
+	private WebElement telefonUzytkownikaZTabeli;
+
 	public Uzytkownicy(WebDriver webDriver) {
 		super(webDriver);
 		waitForClickable(przyciskDodaj);
@@ -57,16 +66,16 @@ public class Uzytkownicy extends Strona {
 
 	public Uzytkownicy kliknijDodajUzytkownika() {
 		przyciskDodaj.click();
-		waitForVisible(nowyUzytkownikImie);
+		waitForVisible(uzytkownikImie);
 		return this;
 	}
 
 	public Uzytkownicy wpiszDaneNowegoUzytkownika(DaneTestowe dane) {
-		nowyUzytkownikImie.sendKeys(dane.getNowyUzytkownikImie());
-		nowyUzytkownikNazwisko.sendKeys(dane.getNowyUzytkownikNazwisko());
-		nowyUzytkownikTelefon.sendKeys(dane.getNowyUzytkownikTelefon());
-		nowyUzytkownikHaslo.sendKeys(dane.getNowyUzytkownikHaslo());
-		nowyUzytkownikEmail.sendKeys(dane.getNowyUzytkownikEmail());
+		uzytkownikImie.sendKeys(dane.getNowyUzytkownikImie());
+		uzytkownikNazwisko.sendKeys(dane.getNowyUzytkownikNazwisko());
+		uzytkownikTelefon.sendKeys(dane.getNowyUzytkownikTelefon());
+		uzytkownikHaslo.sendKeys(dane.getNowyUzytkownikHaslo());
+		uzytkownikEmail.sendKeys(dane.getNowyUzytkownikEmail());
 		zakladkaRole.click();
 		rolaKlient.click();
 		przyciskDodajRole.click();
@@ -80,9 +89,39 @@ public class Uzytkownicy extends Strona {
 		return this;
 	}
 
+	public Uzytkownicy filtrujWgTelefonu(String telefon) {
+		filtrTelefon.sendKeys(telefon);
+		waitForProgressBar();
+		return this;
+	}
+
 	public Uzytkownicy usunUzytkownika() {
 		przyciskUsunUzytkownika.click();
 		przyciskPotwierdz.click();
+		return this;
+	}
+
+	public String pobierzOpisTabeli() {
+		return komunikat.getText();
+	}
+
+	public String pobierzTelefonZTabeli() {
+		return telefonUzytkownikaZTabeli.getText();
+	}
+
+	public Uzytkownicy edytujUzytkownika() {
+		przyciskEdytujUzytkownika.click();
+		return this;
+	}
+
+	public Uzytkownicy wpiszTelefonUzytkownika(String telefon) {
+		uzytkownikNazwisko.sendKeys(telefon);
+		return this;
+	}
+
+	public Uzytkownicy zapiszUzytkownika() {
+		przyciskZapiszUzytkownika.click();
+		waitForProgressBar();
 		return this;
 	}
 
