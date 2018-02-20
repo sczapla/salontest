@@ -85,13 +85,13 @@ public class Uzytkownicy extends Strona {
 
 	public Uzytkownicy filtrujWgNazwiska(String nazwisko) {
 		filtrNazwisko.sendKeys(nazwisko);
-		waitForProgressBar();
+		waitForMiliseconds(3000);
 		return this;
 	}
 
 	public Uzytkownicy filtrujWgTelefonu(String telefon) {
 		filtrTelefon.sendKeys(telefon);
-		waitForProgressBar();
+		waitForMiliseconds(3000);
 		return this;
 	}
 
@@ -116,12 +116,13 @@ public class Uzytkownicy extends Strona {
 
 	public Uzytkownicy wpiszTelefonUzytkownika(String telefon) {
 		uzytkownikNazwisko.sendKeys(telefon);
+		waitForMiliseconds(3000);
 		return this;
 	}
 
 	public Uzytkownicy zapiszUzytkownika() {
 		przyciskZapiszUzytkownika.click();
-		waitForProgressBar();
+		waitForMiliseconds(3000);
 		return this;
 	}
 

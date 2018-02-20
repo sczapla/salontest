@@ -4,10 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Pulpit extends Strona {
+public class Pulpit extends Menu {
 
 	@FindBy(id = "index:userLinkId")
 	private WebElement uzytkownicyLink;
+
+	@FindBy(id = "index:visitKlientLinkId")
+	private WebElement rezerwacjeLink;
+
+	@FindBy(id = "index:historyLinkId")
+	private WebElement historiaLink;
 
 	protected Pulpit(WebDriver webDriver) {
 		super(webDriver);
