@@ -50,13 +50,13 @@ public class Uzytkownicy extends Strona {
 	@FindBy(id = "systemUser:systemUserTable:0:delete")
 	private WebElement przyciskUsunUzytkownika;
 
-	@FindBy(css = "#systemUser:systemUserTable_data > tr > td")
+	@FindBy(xpath = "//*[@id=\"systemUser:systemUserTable_data\"]/tr/td")
 	private WebElement komunikat;
 
 	@FindBy(id = "systemUser:systemUserTable:0:edit")
 	private WebElement przyciskEdytujUzytkownika;
 
-	@FindBy(css = "#systemUser:systemUserTable_data > tr > td:nth-child(3)")
+	@FindBy(xpath = "//*[@id=\"systemUser:systemUserTable_data\"]/tr/td[3]")
 	private WebElement telefonUzytkownikaZTabeli;
 
 	public Uzytkownicy(WebDriver webDriver) {
@@ -77,9 +77,13 @@ public class Uzytkownicy extends Strona {
 		uzytkownikHaslo.sendKeys(dane.getNowyUzytkownikHaslo());
 		uzytkownikEmail.sendKeys(dane.getNowyUzytkownikEmail());
 		zakladkaRole.click();
+		waitForMiliseconds(1000);
 		rolaKlient.click();
+		waitForMiliseconds(1000);
 		przyciskDodajRole.click();
+		waitForMiliseconds(1000);
 		przyciskZapiszUzytkownika.click();
+		waitForMiliseconds(2000);
 		return this;
 	}
 
@@ -111,12 +115,14 @@ public class Uzytkownicy extends Strona {
 
 	public Uzytkownicy edytujUzytkownika() {
 		przyciskEdytujUzytkownika.click();
+		waitForMiliseconds(2000);
 		return this;
 	}
 
 	public Uzytkownicy wpiszTelefonUzytkownika(String telefon) {
-		uzytkownikNazwisko.sendKeys(telefon);
-		waitForMiliseconds(3000);
+		uzytkownikTelefon.clear();
+		uzytkownikTelefon.sendKeys(telefon);
+		waitForMiliseconds(2000);
 		return this;
 	}
 

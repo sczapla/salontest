@@ -64,17 +64,8 @@ public class Strona {
 	}
 
 	/**
-	 * Oczekiwania na zniknięcie typowej dla SERUM strony oczekiwania na
-	 * pobranie strony z tekstem "Trwa pobieranie danych.." i zasłoniętym tłem.
-	 */
-	protected void waitForProgressBar() {
-		WebElement progressBar = webDriver.findElement(By.id("_uf_komunikat"));
-		new WebDriverWait(webDriver, 10, 800).until(ExpectedConditions.invisibilityOf(progressBar));
-	}
-
-	/**
-	 * Czeka określoną liczbe milisekund
-	 * 
+	 * Czeka okre&#x15b;lon&#x105; liczbe milisekund
+	 *
 	 * @param miliSecondsToWait
 	 */
 	protected void waitForMiliseconds(int miliSecondsToWait) {
