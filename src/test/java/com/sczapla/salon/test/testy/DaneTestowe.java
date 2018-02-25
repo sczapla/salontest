@@ -23,6 +23,8 @@ import lombok.Setter;
 public class DaneTestowe {
 	private String uzytkownikKierownikLogin;
 	private String uzytkownikKierownikHaslo;
+	private String uzytkownikKlient1Login;
+	private String uzytkownikKlient1Haslo;
 	private String bazowyUrl;
 	private String nowyUzytkownikImie;
 	private String nowyUzytkownikNazwisko;

@@ -27,6 +27,8 @@ public class LogowanieTest {
 		Pulpit pulpit = Logowanie.otworz(webDriver, dane.getBazowyUrl()).zaloguj(dane.getUzytkownikKierownikLogin(),
 				dane.getUzytkownikKierownikHaslo());
 		assertTrue(pulpit.czyWidocznyLinkUzytkownicy());
+
+		Logowanie logowanie = pulpit.wyloguj();
 	}
 
 }

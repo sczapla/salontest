@@ -15,14 +15,33 @@ public class Pulpit extends Menu {
 	@FindBy(id = "index:historyLinkId")
 	private WebElement historiaLink;
 
+	@FindBy(id = "abc:exitBt")
+	private WebElement przyciskWyloguj;
+
 	protected Pulpit(WebDriver webDriver) {
 		super(webDriver);
-		waitForClickable(uzytkownicyLink);
+		waitForMiliseconds(2000);
 	}
 
 	public Uzytkownicy przejdzDoUzytkownikow() {
 		uzytkownicyLink.click();
 		return new Uzytkownicy(webDriver);
+	}
+
+	public Rezerwacja przejdzDoRezerwacji() {
+		rezerwacjeLink.click();
+		return new Rezerwacja(webDriver);
+	}
+
+	public Historia przejdzDoHistorii() {
+		historiaLink.click();
+		return new Historia(webDriver);
+	}
+
+	public Logowanie wyloguj() {
+		przyciskWyloguj.click();
+		waitForMiliseconds(2000);
+		return new Logowanie(webDriver);
 	}
 
 	public boolean czyWidocznyLinkUzytkownicy() {

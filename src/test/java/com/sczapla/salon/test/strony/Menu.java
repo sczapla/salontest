@@ -24,12 +24,12 @@ public class Menu extends Strona {
 		return new Pulpit(webDriver);
 	}
 
-	public Rezerwacja przejdzDoRezerwacji() {
+	public Rezerwacja przejdzDoRezerwacjiMenu() {
 		pulpit.click();
 		return new Rezerwacja(webDriver);
 	}
 
-	public Historia przejdzDoHistorii() {
+	public Historia przejdzDoHistoriiMenu() {
 		pulpit.click();
 		return new Historia(webDriver);
 	}
