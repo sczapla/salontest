@@ -28,6 +28,7 @@ public class Historia extends Strona {
 		waitForMiliseconds(1000);
 		przyciskPotwierdzUsuniecie.click();
 		waitForMiliseconds(2000);
+		return this;
 	}
 
 	public String pobierzStatus(){

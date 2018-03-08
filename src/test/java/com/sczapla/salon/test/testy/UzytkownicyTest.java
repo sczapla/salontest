@@ -25,13 +25,13 @@ public class UzytkownicyTest {
 
 	@Test
 	public void testDodawanieUzytkownika() {
-		String komunikat = Logowanie.otworz(webDriver, dane.getBazowyUrl())
+		String klasyCss = Logowanie.otworz(webDriver, dane.getBazowyUrl())
 				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo()).przejdzDoUzytkownikow()
 				.kliknijDodajUzytkownika().wpiszDaneNowegoUzytkownika(dane)
 				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).usunUzytkownika()
 				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).pobierzOpisTabeli();
 
-		assertEquals("Brak elementów do wyświetlenia", komunikat);
+		assertEquals("ui-widget-content ui-datatable-empty-message", klasyCss);
 	}
 
 	@Test

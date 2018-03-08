@@ -8,37 +8,37 @@ import com.sczapla.salon.test.testy.DaneTestowe;
 
 public class Uzytkownicy extends Strona {
 
-	@FindBy(id = "systemUser:systemUserTable:j_idt39:filter")
+	@FindBy(id = "systemUser:systemUserTable:surnameColId:filter")
 	private WebElement filtrNazwisko;
 
-	@FindBy(id = "systemUser:systemUserTable:j_idt41:filter")
+	@FindBy(id = "systemUser:systemUserTable:phoneColId:filter")
 	private WebElement filtrTelefon;
 
-	@FindBy(id = "systemUser:j_idt50:userFirstName")
+	@FindBy(id = "systemUser:userTabView:userFirstName")
 	private WebElement uzytkownikImie;
 
-	@FindBy(id = "systemUser:j_idt50:userSurName")
+	@FindBy(id = "systemUser:userTabView:userSurName")
 	private WebElement uzytkownikNazwisko;
 
-	@FindBy(id = "systemUser:j_idt50:userPhone")
+	@FindBy(id = "systemUser:userTabView:userPhone")
 	private WebElement uzytkownikTelefon;
 
-	@FindBy(id = "systemUser:j_idt50:userPassword")
+	@FindBy(id = "systemUser:userTabView:userPassword")
 	private WebElement uzytkownikHaslo;
 
-	@FindBy(id = "systemUser:j_idt50:userMail")
+	@FindBy(id = "systemUser:userTabView:userMail")
 	private WebElement uzytkownikEmail;
 
 	@FindBy(id = "systemUser:userAddButton")
 	private WebElement przyciskDodaj;
 
-	@FindBy(linkText = "Role użytkownika")
+	@FindBy(xpath = "//*[@id=\"systemUser:userTabView\"]/ul/li[2]/a")
 	private WebElement zakladkaRole;
 
-	@FindBy(xpath = "//*[@id=\"systemUser:j_idt50:rolePickList\"]/div[1]/ul/li[3]")
+	@FindBy(xpath = "//*[@id=\"systemUser:userTabView:rolePickList\"]/div[1]/ul/li[3]")
 	private WebElement rolaKlient;
 
-	@FindBy(xpath = "//*[@id=\"systemUser:j_idt50:rolePickList\"]/div[2]/div/button[1]")
+	@FindBy(xpath = "//*[@id=\"systemUser:userTabView:rolePickList\"]/div[2]/div/button[1]")
 	private WebElement przyciskDodajRole;
 
 	@FindBy(id = "systemUser:saveBtn")
@@ -50,7 +50,7 @@ public class Uzytkownicy extends Strona {
 	@FindBy(id = "systemUser:systemUserTable:0:delete")
 	private WebElement przyciskUsunUzytkownika;
 
-	@FindBy(xpath = "//*[@id=\"systemUser:systemUserTable_data\"]/tr/td")
+	@FindBy(xpath = "//*[@id=\"systemUser:systemUserTable_data\"]/tr")
 	private WebElement komunikat;
 
 	@FindBy(id = "systemUser:systemUserTable:0:edit")
@@ -106,7 +106,7 @@ public class Uzytkownicy extends Strona {
 	}
 
 	public String pobierzOpisTabeli() {
-		return komunikat.getText();
+		return komunikat.getAttribute("class");
 	}
 
 	public String pobierzTelefonZTabeli() {
