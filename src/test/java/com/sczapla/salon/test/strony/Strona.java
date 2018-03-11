@@ -1,6 +1,5 @@
 package com.sczapla.salon.test.strony;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
@@ -22,36 +21,18 @@ public class Strona {
 		PageFactory.initElements(webDriver, this);
 	}
 
-	/**
-	 * Czeka aż zostanie spełniony przekazany warunek. Należy przekazać jeden z
-	 * ExpectedConditions.*.
-	 */
 	protected void waitFor(ExpectedCondition<WebElement> expectedCondition) {
 		new WebDriverWait(webDriver, 7).until(expectedCondition);
 	}
 
-	/**
-	 * Czeka aż dany element będzie widoczny dla użytkownika. Uwaga. Uznaje, że
-	 * element jest widoczny nawet jeśli jest zasłonięty przez przyciemnioną
-	 * załonę komunikatu "Trwa pobieranie danych".
-	 */
 	protected void waitForVisible(WebElement element) {
 		new WebDriverWait(webDriver, 7).until(ExpectedConditions.visibilityOf(element));
 	}
 
-	/**
-	 * Czeka aż dany element będzie klikalny. Szczególnie przydatne na stronach
-	 * które po wykonaniu akcji przez użytkownika pokazują przyciemnioną zasłonę
-	 * strony z komunikatem "Trwa pobieranie danych".
-	 */
 	protected void waitForClickable(WebElement element) {
 		new WebDriverWait(webDriver, 10, 300).until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-	/**
-	 * Czeka 2 sekundy na pojawienie się altertu i jeśli się pojawi to go
-	 * aceptuje, jeśli się nie pojawi to nie robi nic.
-	 */
 	protected void acceptAlertOptionally() {
 		try {
 			new WebDriverWait(webDriver, 2).until(ExpectedConditions.alertIsPresent());
@@ -63,11 +44,6 @@ public class Strona {
 		}
 	}
 
-	/**
-	 * Czeka okre&#x15b;lon&#x105; liczbe milisekund
-	 *
-	 * @param miliSecondsToWait
-	 */
 	protected void waitForMiliseconds(int miliSecondsToWait) {
 		try {
 			Thread.sleep(miliSecondsToWait);
