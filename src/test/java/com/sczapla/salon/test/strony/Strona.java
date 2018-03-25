@@ -43,7 +43,6 @@ public class Strona {
 			// Jeśli nie ma alteru to ignorujemy błąd
 		}
 	}
-
 	protected void waitForMiliseconds(int miliSecondsToWait) {
 		try {
 			Thread.sleep(miliSecondsToWait);
@@ -51,5 +50,4 @@ public class Strona {
 			throw new RuntimeException(e);
 		}
 	}
-
 }

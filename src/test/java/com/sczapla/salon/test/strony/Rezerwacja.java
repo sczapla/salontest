@@ -15,7 +15,8 @@ public class Rezerwacja extends Menu {
 	@FindBy(xpath = "/html/body/div[3]/div[2]/section[2]/form/div/div/div[3]/div/div/div/div[1]/div[1]/div/button[2]")
 	private WebElement nastepnyTydzien;
 
-	@FindBy(xpath = "/html/body/div[3]/div[2]/section[2]/form/div/div/div[3]/div/div/div/div[2]/div/table/tbody/tr/td/div/div/div[3]/table/tbody/tr/td[2]/div/div[2]/a[1]")
+	@FindBy(xpath = "/html/body/div[3]/div[2]/section[2]/form/div/div/div[3]/div/div/div/div[2]"
+			+ "/div/table/tbody/tr/td/div/div/div[3]/table/tbody/tr/td[2]/div/div[2]/a[1]")
 	private WebElement termin;
 
 	@FindBy(id = "visit:confirmBt")
@@ -45,5 +46,4 @@ public class Rezerwacja extends Menu {
 		waitForMiliseconds(2000);
 		return this;
 	}
-
 }

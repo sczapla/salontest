@@ -112,24 +112,20 @@ public class Uzytkownicy extends Strona {
 	public String pobierzTelefonZTabeli() {
 		return telefonUzytkownikaZTabeli.getText();
 	}
-
 	public Uzytkownicy edytujUzytkownika() {
 		przyciskEdytujUzytkownika.click();
 		waitForMiliseconds(2000);
 		return this;
 	}
-
 	public Uzytkownicy wpiszTelefonUzytkownika(String telefon) {
 		uzytkownikTelefon.clear();
 		uzytkownikTelefon.sendKeys(telefon);
 		waitForMiliseconds(2000);
 		return this;
 	}
-
 	public Uzytkownicy zapiszUzytkownika() {
 		przyciskZapiszUzytkownika.click();
 		waitForMiliseconds(3000);
 		return this;
 	}
-
 }

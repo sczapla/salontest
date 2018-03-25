@@ -9,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -26,8 +24,9 @@ public class WizytaTest {
 	@Test
 	public void testDodawanieUzytkownika() {
 		Historia historia = Logowanie.otworz(webDriver, dane.getBazowyUrl())
-				.zaloguj(dane.getUzytkownikKlient1Login(), dane.getUzytkownikKlient1Haslo()).przejdzDoRezerwacji()
-				.wybierzUsluge().wybierzNastepnyTydzien().zarezerwujTermin().przejdzDoPulpitu().przejdzDoHistorii();
+				.zaloguj(dane.getUzytkownikKlient1Login(), dane.getUzytkownikKlient1Haslo())
+				.przejdzDoRezerwacji().wybierzUsluge().wybierzNastepnyTydzien()
+				.zarezerwujTermin().przejdzDoPulpitu().przejdzDoHistorii();
 
 		assertEquals("ZAREZERWOWANE", historia.pobierzStatus());
 

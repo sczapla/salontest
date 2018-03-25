@@ -37,13 +37,11 @@ public class Pulpit extends Menu {
 		historiaLink.click();
 		return new Historia(webDriver);
 	}
-
 	public Logowanie wyloguj() {
 		przyciskWyloguj.click();
 		waitForMiliseconds(2000);
 		return new Logowanie(webDriver);
 	}
-
 	public boolean czyWidocznyLinkUzytkownicy() {
 		return uzytkownicyLink.isDisplayed();
 	}

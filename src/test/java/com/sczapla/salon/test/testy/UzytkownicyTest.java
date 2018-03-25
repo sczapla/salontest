@@ -26,8 +26,8 @@ public class UzytkownicyTest {
 	@Test
 	public void testDodawanieUzytkownika() {
 		String klasyCss = Logowanie.otworz(webDriver, dane.getBazowyUrl())
-				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo()).przejdzDoUzytkownikow()
-				.kliknijDodajUzytkownika().wpiszDaneNowegoUzytkownika(dane)
+				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo())
+				.przejdzDoUzytkownikow().kliknijDodajUzytkownika().wpiszDaneNowegoUzytkownika(dane)
 				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).usunUzytkownika()
 				.filtrujWgNazwiska(dane.getNowyUzytkownikNazwisko()).pobierzOpisTabeli();
 
@@ -38,9 +38,10 @@ public class UzytkownicyTest {
 	public void testModyfikacjaUzytkownika() {
 		String telefon = String.valueOf(ThreadLocalRandom.current().nextInt(100000000, 1000000000));
 		String telefonZTabeli = Logowanie.otworz(webDriver, dane.getBazowyUrl())
-				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo()).przejdzDoUzytkownikow()
-				.filtrujWgNazwiska(dane.getIstniejacyUzytkownikNazwisko()).edytujUzytkownika()
-				.wpiszTelefonUzytkownika(telefon).zapiszUzytkownika().pobierzTelefonZTabeli();
+				.zaloguj(dane.getUzytkownikKierownikLogin(), dane.getUzytkownikKierownikHaslo())
+				.przejdzDoUzytkownikow().filtrujWgNazwiska(dane.getIstniejacyUzytkownikNazwisko())
+				.edytujUzytkownika().wpiszTelefonUzytkownika(telefon).zapiszUzytkownika()
+				.pobierzTelefonZTabeli();
 		assertEquals(telefon, telefonZTabeli);
 	}
 
